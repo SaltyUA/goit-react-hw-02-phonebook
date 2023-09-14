@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import React from 'react';
 
 const ContactItem = ({ name, id, number }) => {
