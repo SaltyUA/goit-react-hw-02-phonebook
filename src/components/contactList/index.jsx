@@ -1,15 +1,17 @@
 import ContactItem from 'components/contactItem';
-import React from 'react';
+import ListStyled from './List.styled';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, filterValue }) => {
+  console.log(contacts);
   return (
     <>
-      <h2>Contacts</h2>
-      <ul>
-        {contacts.map(({ name, id, number }) => (
-          <ContactItem name={name} key={id} number={number} />
-        ))}
-      </ul>
+      <ListStyled>
+        {contacts.map(({ id, name, number }) =>
+          name.toLowerCase().includes(filterValue.toLowerCase()) ? (
+            <ContactItem name={name} key={id} number={number} />
+          ) : null
+        )}
+      </ListStyled>
     </>
   );
 };

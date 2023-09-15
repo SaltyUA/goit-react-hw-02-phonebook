@@ -1,11 +1,13 @@
 const { default: styled } = require('styled-components');
 
 const FormFlex = styled('form')(() => ({
+  paddingTop: 20,
   margin: '0 auto',
+  border: '1px solid black',
+  padding: 10,
   display: 'flex',
   flexDirection: 'column',
-  gap: 20,
-  width: '50vw',
+  maxWidth: 300,
   justifyContent: 'center',
   alignItems: 'center',
 }));

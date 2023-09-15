@@ -1,10 +1,11 @@
 import React from 'react';
+import ContactTypography from './ContactTypography.styled';
 
 const ContactItem = ({ name, id, number }) => {
   return (
-    <li key={id}>
+    <ContactTypography key={id}>
       {name}: {number}
-    </li>
+    </ContactTypography>
   );
 };
 
