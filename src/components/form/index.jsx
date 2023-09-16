@@ -18,8 +18,18 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit({ ...this.state });
-    this.reset();
+    let isExist;
+    this.props.contacts.forEach(contact => {
+      if (contact.name === this.state.name) {
+        isExist = true;
+      }
+    });
+    if (!isExist) {
+      this.props.onSubmit({ ...this.state });
+      this.reset();
+    } else {
+      window.alert(`${this.state.name} is already in contacts`);
+    }
   };
 
   reset = () => {
