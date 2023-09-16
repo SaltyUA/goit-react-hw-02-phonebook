@@ -12,6 +12,7 @@ const ContactList = ({ contacts, filterValue, handleDelete }) => {
               key={id}
               number={number}
               handleDelete={handleDelete}
+              id={id}
             />
           ) : null
         )}

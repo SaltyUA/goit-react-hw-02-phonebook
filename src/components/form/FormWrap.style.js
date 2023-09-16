@@ -2,8 +2,9 @@ const { default: styled } = require('styled-components');
 
 const FormWrap = styled.div`
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 `;
 
 export default FormWrap;

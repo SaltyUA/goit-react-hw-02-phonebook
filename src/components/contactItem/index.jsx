@@ -1,13 +1,13 @@
-import React from 'react';
 import ContactTypography from './ContactTypography.styled';
+import DeleteButton from './DeleteButton.styled';
 
 const ContactItem = ({ name, id, number, handleDelete }) => {
   return (
-    <ContactTypography key={id}>
+    <ContactTypography>
       {name}: {number}
-      <button onClick={() => handleDelete(id)} type="button">
+      <DeleteButton onClick={() => handleDelete(id)} type="button">
         Delete
-      </button>
+      </DeleteButton>
     </ContactTypography>
   );
 };

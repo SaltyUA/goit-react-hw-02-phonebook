@@ -8,8 +8,6 @@ const FormFlex = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   maxWidth: 300,
-  justifyContent: 'center',
-  alignItems: 'center',
 }));
 
 export default FormFlex;
