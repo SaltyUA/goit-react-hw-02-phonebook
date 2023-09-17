@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import FormFlex from './FormFlex.styled';
-import LabelTypography from './LabelTypography.styled';
-import Input from './Input.styled';
-import SubmitButton from './SubmitButton.styled';
-import FormWrap from './FormWrap.style';
+import {
+  FormContainer,
+  FormWrap,
+  LabelTypography,
+  Input,
+  SubmitButton,
+} from './Form.styled';
 
 class Form extends Component {
   state = {
@@ -18,18 +20,19 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let isExist;
-    this.props.contacts.forEach(contact => {
-      if (contact.name === this.state.name) {
-        isExist = true;
-      }
-    });
-    if (!isExist) {
-      this.props.onSubmit({ ...this.state });
-      this.reset();
-    } else {
-      window.alert(`${this.state.name} is already in contacts`);
+    const { name } = this.state;
+    const { onSubmit, contacts } = this.props;
+
+    let isExist = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isExist) {
+      window.alert(`${name} is already in contacts`);
+      return;
     }
+
+    onSubmit({ ...this.state });
+    this.reset();
   };
 
   reset = () => {
@@ -37,15 +40,16 @@ class Form extends Component {
   };
 
   render() {
+    const { name, number } = this.state;
     return (
-      <FormFlex onSubmit={this.handleSubmit}>
+      <FormContainer onSubmit={this.handleSubmit}>
         <FormWrap>
           <LabelTypography htmlFor="name">Name</LabelTypography>
           <Input
             onChange={this.handleChange}
             type="text"
             name="name"
-            value={this.state.name}
+            value={name}
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
@@ -57,14 +61,14 @@ class Form extends Component {
             onChange={this.handleChange}
             type="tel"
             name="number"
-            value={this.state.number}
+            value={number}
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </FormWrap>
         <SubmitButton type="submit">Add contact</SubmitButton>
-      </FormFlex>
+      </FormContainer>
     );
   }
 }

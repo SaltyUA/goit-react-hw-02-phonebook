@@ -21,6 +21,13 @@ export class App extends Component {
     }));
   };
 
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   submitContact = ({ name, number }) => {
     const id = nanoid();
     this.setState(prevState => ({
@@ -35,26 +42,21 @@ export class App extends Component {
   };
 
   render() {
+    const { filter, contacts } = this.state;
+    const filtered = this.getFilteredContacts();
     return (
       <div>
         <h1>Phonebook</h1>
-        <Form
-          contacts={this.state.contacts}
-          handleSubmit={this.handleSubmit}
-          nameValue={this.state.name}
-          telValue={this.state.number}
-          onSubmit={values => this.submitContact(values)}
-        />
+        <Form contacts={contacts} onSubmit={this.submitContact} />
         <h2>Contacts</h2>
-        <FilterInput
-          fiterValue={this.state.filter}
-          handleFilter={this.handleFilter}
-        />
-        <ContactList
-          contacts={this.state.contacts}
-          filterValue={this.state.filter}
-          handleDelete={this.handleDelete}
-        />
+        <FilterInput fiterValue={filter} handleFilter={this.handleFilter} />
+        {filtered.length > 0 && (
+          <ContactList
+            contacts={filtered}
+            filterValue={filter}
+            handleDelete={this.handleDelete}
+          />
+        )}
       </div>
     );
   }

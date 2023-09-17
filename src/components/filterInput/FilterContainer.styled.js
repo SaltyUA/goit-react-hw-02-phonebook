@@ -1,6 +1,6 @@
 const { default: styled } = require('styled-components');
 
-const FilterContainer = styled.div`
+export const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,4 +8,6 @@ const FilterContainer = styled.div`
   margin-bottom: 15px;
 `;
 
-export default FilterContainer;
+export const TextTypography = styled.p`
+  font-weight: 500;
+`;

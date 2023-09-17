@@ -1,6 +1,5 @@
-import Input from 'components/form/Input.styled';
-import TextTypography from './TextTypography.styled';
-import FilterContainer from './FilterContainer.styled';
+import { FilterContainer, TextTypography } from './FilterContainer.styled';
+import { Input } from 'components/form/Form.styled';
 
 // Input in ContactList for filtering contacts
 const FilterInput = ({ filterValue, handleFilter }) => {

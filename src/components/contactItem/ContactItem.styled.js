@@ -1,6 +1,10 @@
 const { default: styled } = require('styled-components');
 
-const DeleteButton = styled.button`
+export const ContactTypography = styled.li`
+  font-weight: 500;
+`;
+
+export const DeleteButton = styled.button`
   border-radius: 10px;
   font-weight: 500;
   padding: 5px;
@@ -9,5 +13,3 @@ const DeleteButton = styled.button`
     background-color: #ff3030;
   }
 `;
-
-export default DeleteButton;

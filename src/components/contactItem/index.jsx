@@ -1,5 +1,4 @@
-import ContactTypography from './ContactTypography.styled';
-import DeleteButton from './DeleteButton.styled';
+import { ContactTypography, DeleteButton } from './ContactItem.styled';
 
 const ContactItem = ({ name, id, number, handleDelete }) => {
   return (
